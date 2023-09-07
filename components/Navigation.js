@@ -55,7 +55,7 @@ export default class Navigation {
     return `
       <div class="nav-container">
         <div class="nav-content | grid-element">
-          <a href="/"><img alt="Alice Kineto Logo" class="logo" data-type="primary-logo" src="/media/logo.webp" /></a>
+          <a href="/"><img alt="Alice Kineto Logo" class="logo" data-type="primary-logo" src="https://edibalan.github.io/alice-kineto/assets/logo.webp" /></a>
 
           <nav class="primary-nav">
             <ul aria-label="Navigation Menu" class="nav-menu | grid-element" role="list">${this.renderNavMenuComponents()}</ul>
