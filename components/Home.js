@@ -35,7 +35,7 @@ export default class Home {
             </a>
           </div>
           <div>
-            <img alt="Kinetotherapy illustration" class="home-image" src="/media/${this.data["services-images"][1]}" />
+            <img alt="Kinetotherapy illustration" class="home-image" src="https://edibalan.github.io/alice-kineto/assets/${this.data["services-images"][1]}" />
           </div>
         </div>
       </section>
