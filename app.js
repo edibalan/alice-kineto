@@ -1,14 +1,15 @@
 "use strict";
-import Navigation from "./components/Navigation.js";
-import NavigationEventsHandler from "./handlers/NavigationEventsHandler.js";
-import Home from "./components/Home.js";
-import Services from "./components/Services.js";
-import ServicesEventsHandler from "./handlers/ServicesEventsHandler.js";
-import Gallery from "./components/Gallery.js";
-import GalleryEventsHandler from "./handlers/GalleryEventsHandler.js";
-import Prices from "./components/Prices.js";
-import PricesEventsHandler from "./handlers/PricesEventsHandler.js";
-import Contact from "./components/Contact.js";
+import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
+import Home from "https://edibalan.github.io/alice-kineto/components/Home.js";
+import Services from "https://edibalan.github.io/alice-kineto/components/Services.js";
+import Gallery from "https://edibalan.github.io/alice-kineto/components/Gallery.js";
+import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
+import Contact from "https://edibalan.github.io/alice-kineto/components/Contact.js";
+
+import NavigationEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/NavigationEventsHandler.js";
+import ServicesEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/ServicesEventsHandler.js";
+import GalleryEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/GalleryEventsHandler.js";
+import PricesEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/PricesEventsHandler.js";
 
 export const QS = element => document.querySelector(element), QSAll = element => document.querySelectorAll(element);
 class App {
