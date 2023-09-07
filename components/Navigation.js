@@ -1,5 +1,5 @@
 "use strict";
-import { QS } from "../app.js";
+import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
 
 export default class Navigation {
   constructor(data) {
