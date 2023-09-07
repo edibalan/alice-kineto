@@ -86,9 +86,8 @@ body {
   text-align: center;
 }
 
-h1,h2 {letter-spacing: 0.02rem;}
-h1,h2,li,[data-type="contact-button"],[data-type="gallery-button"],[data-type="home-button"],.prices-list th,.prices-costs,
-.copyright {text-transform: uppercase;}
+h1, h2 {letter-spacing: 0.02rem;}
+h1, h2, li, [data-type="contact-button"], [data-type="gallery-button"], [data-type="home-button"], .prices-list th, .prices-costs, .copyright {text-transform: uppercase;}
 
 a:active, button:active {color: var(--blue-500);}
 a, button {
@@ -166,9 +165,7 @@ a, button {
   padding-inline: 0.9375rem;
 }
 
-[data-type="contact-button"]:active, [data-type="home-button"]:active, [data-type="gallery-button"]:active,
-.prices-list th {color: var(--white);}
-
+[data-type="contact-button"]:active, [data-type="home-button"]:active, [data-type="gallery-button"]:active, .prices-list th {color: var(--white);}
 [data-type="contact-button"]:active, [data-type="gallery-button"]:active {
   background-color: var(--blue-100);
   border-color: var(--blue-100);
@@ -519,7 +516,7 @@ a, button {
   [data-type="home-button"]:hover {background-color: var(--black); color: var(--white);}
 
   .home-section {
-    background-image: url(/media/background.webp);
+    background-image: url(https://edibalan.github.io/alice-kineto/assets/background.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
