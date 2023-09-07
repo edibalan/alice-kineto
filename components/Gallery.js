@@ -5,7 +5,7 @@ export default class Gallery {
       let gallery = "";
 
       for(let i = 0; i < data["gallery-images"].length; i++) {
-        gallery += `<img alt="Kinetotherapy clinic photo" class="gallery-image" src="/media/${data["gallery-images"][i]}" />`;
+        gallery += `<img alt="Kinetotherapy clinic photo" class="gallery-image" src="https://edibalan.github.io/alice-kineto/assets/${data["gallery-images"][i]}" />`;
       };
 
       return gallery;
