@@ -21,7 +21,7 @@ class App {
   }
 
   async render() {
-    const request = await fetch("/data/data.json", {"method": "GET"}), data = await request.json();
+    const request = await fetch("https://edibalan.github.io/alice-kineto/data/data.json", {"method": "GET"}), data = await request.json();
 
     try {
       if (request.status === 200) {
