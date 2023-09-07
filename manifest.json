@@ -6,13 +6,13 @@
   "theme_color": "#FFFFFF",
   "icons": [
     {
-      "src": "./media/favicon-512.png",
+      "src": "https://edibalan.github.io/alice-kineto/assets/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "./media/favicon-144.png",
+      "src": "https://edibalan.github.io/alice-kineto/assets/favicon-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
