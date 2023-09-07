@@ -1,6 +1,6 @@
 "use strict";
-import { QS } from "../app.js";
-import Prices from "../components/Prices.js";
+import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
+import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
 
 export default class PricesEventsHandler extends Prices {
   constructor(data) {
