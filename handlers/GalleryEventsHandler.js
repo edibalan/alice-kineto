@@ -1,6 +1,6 @@
 "use strict";
-import { QS, QSAll } from "../app.js";
-import Gallery from "../components/Gallery.js";
+import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
+import Gallery from "https://edibalan.github.io/alice-kineto/components/Gallery.js";
 
 export default class GalleryEventsHandler extends Gallery {
   constructor() {
