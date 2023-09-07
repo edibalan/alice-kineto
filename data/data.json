@@ -45,7 +45,7 @@
   "program-days": ["Luni - Vineri", "Pauza", "Sambata", "Duminica"],
   "program-hours": ["10.00 - 19.00", "13.00 - 14.00", "Liber", "Liber"],
 
-  "secondary-logo": "<img alt='Alice Kineto Logo' class='secondary-logo' id='secondary-logo' src='/media/logo.webp' />",
+  "secondary-logo": "<img alt='Alice Kineto Logo' class='secondary-logo' id='secondary-logo' src='https://edibalan.github.io/alice-kineto/assets/logo.webp' />",
 
   "services-images": ["gimnastica.webp", "kinetoterapie.webp", "masaj.webp", "reflexoterapie.webp"],
   
