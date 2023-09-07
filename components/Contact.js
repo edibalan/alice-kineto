@@ -1,5 +1,5 @@
 "use strict";
-import { sideMenuComponents } from "./Navigation.js";
+import { sideMenuComponents } from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
 export default class Contact {
   render() {
     return `
