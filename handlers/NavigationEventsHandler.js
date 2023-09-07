@@ -1,6 +1,6 @@
 "use strict";
-import { QS } from "../app.js";
-import Navigation from "../components/Navigation.js";
+import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
+import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
 
 export default class NavigationEventsHandler extends Navigation {
   constructor() {
