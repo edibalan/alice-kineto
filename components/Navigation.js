@@ -50,7 +50,7 @@ export default class Navigation {
   }
 
   render() {
-    setTimeout(() => QS(".program").insertAdjacentHTML("afterbegin", this.data["secondary-logo"]), 10);
+    // setTimeout(() => QS(".program").insertAdjacentHTML("afterbegin", this.data["secondary-logo"]), 10);
 
     return `
       <div class="nav-container">
