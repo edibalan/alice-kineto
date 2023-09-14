@@ -25,6 +25,7 @@ class App {
 
     try {
       if (request.status === 200) {
+        window.location.href = "https://edibalan.github.io/alice-kineto/index.html"
         this.header.innerHTML = new Navigation(data).render();
     
         this.main.innerHTML = `
