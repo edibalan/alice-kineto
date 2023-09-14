@@ -42,7 +42,7 @@ class App {
         this.body.insertAdjacentElement("afterbegin", this.header);
 
         setTimeout(() => {
-          new NavigationEventsHandler().initiateHandler();
+          new NavigationEventsHandler(data).initiateHandler();
           new ServicesEventsHandler().initiateHandler();
           new GalleryEventsHandler().initiateHandler();
           new PricesEventsHandler(data).initiateHandler();
