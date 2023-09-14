@@ -17,7 +17,7 @@ export default class Navigation {
         
         this.navMenuComponents[2] += `
           <li class="fs-small">
-            <a href="${data["navigation-locations"][i]}">${data["navigation-labels"][i]}</a>
+            <a href="index.html${data["navigation-locations"][i]}">${data["navigation-labels"][i]}</a>
           </li>
         `;
       };
