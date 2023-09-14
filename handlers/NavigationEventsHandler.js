@@ -1,5 +1,5 @@
 "use strict";
-import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
+import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
 
 export default class NavigationEventsHandler extends Navigation {
@@ -10,7 +10,7 @@ export default class NavigationEventsHandler extends Navigation {
     this.homeButton = QS("#home-button");
     this.homeSection = QS(".home-section");
     this.navMenu = QS(".nav-container");
-    this.navLinks = QS(".navigation-link");
+    this.navLinks = QSAll(".navigation-link");
     this.openSideMenuBtn = QS("#open-nav-button");
     this.previousPosition = window.scrollY;
     this.sideMenu = QS(".side-menu-container");
