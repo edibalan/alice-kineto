@@ -77,6 +77,7 @@ export default class NavigationEventsHandler extends Navigation {
       this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
       this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
       QSAll("a").forEach(anchor => anchor.addEventListener("click", this.closeSideMenu));
+      setTimeout(() => this.navLocationHandler(), 50);
     };
   }
 }
