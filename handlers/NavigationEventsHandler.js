@@ -33,7 +33,7 @@ export default class NavigationEventsHandler extends Navigation {
 
     this.navLocationHandler = () => {
       for(let i = 0; i < data["navigation-locations"].length; i++) {
-         this.navLinks[i].addEventListener("click", window.scrollTo(0, data["navigation-locations"][i]));
+         this.navLinks[i].addEventListener("click", () => window.scrollTo(0, data["navigation-locations"][i]));
       }
     };
     
