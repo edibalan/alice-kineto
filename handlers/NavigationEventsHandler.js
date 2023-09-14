@@ -76,10 +76,7 @@ export default class NavigationEventsHandler extends Navigation {
     if (screen.width < 912) {
       this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
       this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
-      QSAll("a").forEach(anchor => anchor.addEventListener("click", () => {
-         this.closeSideMenu;
-         setTimeout(() => this.navLocationHandler(), 250);
-      }));
+      //QSAll("a").forEach(anchor => anchor.addEventListener("click", event => this.closeSideMenu));
     };
   }
 }
