@@ -3,13 +3,14 @@ import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
 import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
 
 export default class NavigationEventsHandler extends Navigation {
-  constructor() {
+  constructor(data) {
     super();
     
     this.closeSideMenuBtn = QS("#close-nav-button");
     this.homeButton = QS("#home-button");
     this.homeSection = QS(".home-section");
     this.navMenu = QS(".nav-container");
+    this.navLinks = QS(".navigation-link");
     this.openSideMenuBtn = QS("#open-nav-button");
     this.previousPosition = window.scrollY;
     this.sideMenu = QS(".side-menu-container");
@@ -30,6 +31,8 @@ export default class NavigationEventsHandler extends Navigation {
       }, 500);
     };
 
+    this.navLocationHandler = () => this.navLinks.forEach(link => link.addEventListener("click", () => window.scrollTo(0, data["navigation-locations"][i])));
+    
     this.openSideMenu = () => {
       this.navMenu.classList.add("hide-nav-menu");
 
