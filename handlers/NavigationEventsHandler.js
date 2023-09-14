@@ -10,7 +10,6 @@ export default class NavigationEventsHandler extends Navigation {
     this.homeButton = QS("#home-button");
     this.homeSection = QS(".home-section");
     this.navMenu = QS(".nav-container");
-    this.navLinks = QSAll(".navigation-link");
     this.openSideMenuBtn = QS("#open-nav-button");
     this.previousPosition = window.scrollY;
     this.sideMenu = QS(".side-menu-container");
@@ -29,12 +28,6 @@ export default class NavigationEventsHandler extends Navigation {
 
         this.navMenu.classList.remove("hide-nav-menu");
       }, 500);
-    };
-
-    this.navLocationHandler = () => {
-      for(let i = 0; i < data["navigation-locations"].length; i++) {
-         this.navLinks[i].addEventListener("click", () => window.scrollTo(0, data["navigation-locations"][i]));
-      }
     };
     
     this.openSideMenu = () => {
@@ -71,12 +64,10 @@ export default class NavigationEventsHandler extends Navigation {
 
   initiateHandler() {
     window.addEventListener("scroll", this.scrollEvent);
-    this.navLocationHandler();
     
     if (screen.width < 912) {
       this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
       this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
-      //QSAll("a").forEach(anchor => anchor.addEventListener("click", event => this.closeSideMenu));
     };
   }
 }
