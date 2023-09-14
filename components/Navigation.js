@@ -5,8 +5,6 @@ export default class Navigation {
   constructor(data) {
     this.data = data;
     this.navMenuComponents = ["", "", ""];
-
-    this.navigationLocationHandler = i => window.scrollTo(0, data["navigation-locations"][i]);
     
     this.renderNavMenuComponents = () => {
       for(let i = 0; i < 4; i++) {
