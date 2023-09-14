@@ -76,6 +76,7 @@ export default class NavigationEventsHandler extends Navigation {
     if (screen.width < 912) {
       this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
       this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
+      document.querySelector("a").addEventListener("click", this.closeSideMenu);
     }
   }
 }
