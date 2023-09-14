@@ -31,7 +31,11 @@ export default class NavigationEventsHandler extends Navigation {
       }, 500);
     };
 
-    this.navLocationHandler = () => this.navLinks.forEach(link => link.addEventListener("click", () => window.scrollTo(0, data["navigation-locations"][link])));
+    this.navLocationHandler = () => {
+      for(let i = 0; i < data["navigation-locations"].length; i++) {
+         this.navLinks[i].addEventListener("click", window.scrollTo(0, data["navigation-locations"][i]));
+      }
+    };
     
     this.openSideMenu = () => {
       this.navMenu.classList.add("hide-nav-menu");
