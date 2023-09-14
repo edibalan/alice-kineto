@@ -5,7 +5,9 @@ export default class Navigation {
   constructor(data) {
     this.data = data;
     this.navMenuComponents = ["", "", ""];
-  
+
+    this.navigationLocationHandler = i => window.scrollTo(0, data["navigation-locations"][i]);
+    
     this.renderNavMenuComponents = () => {
       for(let i = 0; i < 4; i++) {
         this.navMenuComponents[0] += `
@@ -17,7 +19,7 @@ export default class Navigation {
         
         this.navMenuComponents[2] += `
           <li class="fs-small">
-            <a onclick="window.scrollTo(0, ${data["navigation-locations"][i]})">${data["navigation-labels"][i]}</a>
+            <a class="navigation-link">${data["navigation-labels"][i]}</a>
           </li>
         `;
       };
