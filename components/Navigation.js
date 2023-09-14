@@ -17,7 +17,7 @@ export default class Navigation {
         
         this.navMenuComponents[2] += `
           <li class="fs-small">
-            <a href="${data["navigation-links"][i]}">${data["navigation-labels"][i]}</a>
+            <a onclick="window.scrollTo(0, ${data["navigation-locations"][i]})">${data["navigation-labels"][i]}</a>
           </li>
         `;
       };
