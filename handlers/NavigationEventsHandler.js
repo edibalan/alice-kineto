@@ -67,7 +67,8 @@ export default class NavigationEventsHandler extends Navigation {
 
   initiateHandler() {
     window.addEventListener("scroll", this.scrollEvent);
-
+    this.navLocationHandler();
+    
     if (screen.width < 912) {
       this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
       this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
