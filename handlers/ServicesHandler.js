@@ -2,7 +2,7 @@
 import { QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Services from "https://edibalan.github.io/alice-kineto/components/Services.js";
 
-export default class ServicesEventsHandler extends Services {
+export default class ServicesHandler extends Services {
   constructor() {
     super();
     
