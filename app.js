@@ -6,10 +6,10 @@ import Gallery from "https://edibalan.github.io/alice-kineto/components/Gallery.
 import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
 import Contact from "https://edibalan.github.io/alice-kineto/components/Contact.js";
 
-import NavigationEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/NavigationEventsHandler.js";
-import ServicesEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/ServicesEventsHandler.js";
-import GalleryEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/GalleryEventsHandler.js";
-import PricesEventsHandler from "https://edibalan.github.io/alice-kineto/handlers/PricesEventsHandler.js";
+import NavigationHandler from "https://edibalan.github.io/alice-kineto/handlers/NavigationHandler.js";
+import ServicesHandler from "https://edibalan.github.io/alice-kineto/handlers/ServicesHandler.js";
+import GalleryHandler from "https://edibalan.github.io/alice-kineto/handlers/GalleryHandler.js";
+import PricesHandler from "https://edibalan.github.io/alice-kineto/handlers/PricesHandler.js";
 
 export const QS = element => document.querySelector(element), QSAll = element => document.querySelectorAll(element);
 class App {
@@ -42,10 +42,10 @@ class App {
         this.body.insertAdjacentElement("afterbegin", this.header);
 
         setTimeout(() => {
-          new NavigationEventsHandler(data).initiateHandler();
-          new ServicesEventsHandler().initiateHandler();
-          new GalleryEventsHandler().initiateHandler();
-          new PricesEventsHandler(data).initiateHandler();
+          new NavigationHandler(data).initiateHandler();
+          new ServicesHandler().initiateHandler();
+          new GalleryHandler().initiateHandler();
+          new PricesHandler(data).initiateHandler();
         }, 100);
       }
     } catch (error) {
