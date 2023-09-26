@@ -2,7 +2,7 @@
 import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
 import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
 
-export default class PricesEventsHandler extends Prices {
+export default class PricesHandler extends Prices {
   constructor(data) {
     super(data);
 
