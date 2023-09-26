@@ -2,7 +2,7 @@
 import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
 
-export default class NavigationEventsHandler extends Navigation {
+export default class NavigationHandler extends Navigation {
   constructor(data) {
     super();
     
@@ -65,7 +65,7 @@ export default class NavigationEventsHandler extends Navigation {
   initiateHandler() {
     window.addEventListener("scroll", this.scrollEvent);
     
-    if (screen.width < 912) {
+    if (window.innerWidth < 912) {
       this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
       this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
     };
