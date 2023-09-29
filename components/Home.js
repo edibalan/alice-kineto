@@ -25,7 +25,7 @@ export default class Home {
 
   render() {
     return `
-      <section class="home-section | grid-element full-screen">
+      <section class="home-section | grid-element">
         <div class="home-container | container grid-element">
           <div class="home-content">
             <h1 class="home-title | fs-large fw-bold">Bun venit !</h1>
