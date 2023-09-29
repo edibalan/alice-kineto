@@ -493,7 +493,7 @@ a, button {
   .side-menu li a:hover {border-bottom: 1px solid var(--black);}
   
   .home-section {
-    background-image: url(/assets/background.webp);
+    background-image: url(https://edibalan.github.io/alice-kineto/assets/background.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 97.5%;
