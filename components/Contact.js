@@ -10,9 +10,9 @@ export default class Contact {
           </ul>
         </nav>
       </div>
-      <div class="copyright | grid-element fs-small fw-sm-bold">
-        <p>Alice Professional Kineto <span class="version">v2.1</span></p>
-        <p>Copyright ©${new Date().getFullYear()}</p>
+      <div class="copyright | grid-element fw-sm-bold">
+        <p class="fs-small">Alice Professional Kineto</p>
+        <p class="fs-small">Copyright ©${new Date().getFullYear()}</p>
       </div>
     `;
   }
