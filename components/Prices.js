@@ -8,31 +8,19 @@ export default class Prices {
         pricesList += `
           <tr>
             <td class="prices-services">
-              ${screen.width >= 460 ? [i + 1] + ". " + data["prices-services"][i] : data["prices-services"][i]}
+              ${window.innerWidth >= 460 ? [i + 1] + ". " + data["prices-services"][i] : data["prices-services"][i]}
             </td>
             <td class="prices-times">
-              ${screen.width >= 460 ? data["prices-times"][i] + " minute" : data["prices-times"][i]}
+              ${window.innerWidth >= 460 ? data["prices-times"][i] + " minute" : data["prices-times"][i]}
             </td>
             <td class="prices-costs">
-              ${screen.width >= 460 ? data["prices-costs"][i] + " ron" : data["prices-costs"][i]}
+              ${window.innerWidth >= 460 ? data["prices-costs"][i] + " ron" : data["prices-costs"][i]}
             </td>
           </tr>
         `;
       };
       
       return pricesList;
-    };
-
-    this.renderPricesListHandler = () => {
-      if (screen.width === 1024 || (screen.width >= 1440 && screen.width < 1600)) { return this.renderPricesList(9) }
-
-      if (screen.width < 460) { return this.renderPricesList(4) } 
-      else if (screen.width >= 460 && screen.width < 600) { return this.renderPricesList(5) }
-      else if (screen.width >= 600 && screen.width < 712) { return this.renderPricesList(6) }
-      else if (screen.width >= 712 && screen.width < 912) { return this.renderPricesList(7) }
-      else if (screen.width >= 912 && screen.width < 1440) { return this.renderPricesList(8) }
-      else if (screen.width >= 1440 && screen.width < 1600) { return this.renderPricesList(9) }
-      else { return this.renderPricesList(10) }
     };
   }
   
@@ -52,12 +40,12 @@ export default class Prices {
             <thead>
               <tr class="fw-bold">
                 <th class="prices-header">Serviciu</th>
-                <th>Timp ${screen.width < 460 ? "(mnt.)" : ""}</th>
-                <th>Pret ${screen.width < 460 ? "(RON)" : ""}</th>
+                <th id="time">Timp</th>
+                <th id="price">Pret</th>
               </tr>
             </thead>
             
-            <tbody class="prices-services-list">${this.renderPricesListHandler()}</tbody>
+            <tbody class="prices-services-list">${this.renderPricesList(4)}</tbody>
           </table>
           <button class="prices-button | button fs-small fw-sm-bold" data-type="prices-button">Mai mult</button>
         </div>
