@@ -1,11 +1,9 @@
 "use strict";
 import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
-
 export default class NavigationHandler extends Navigation {
-  constructor(data) {
+  constructor() {
     super();
-    
     this.closeSideMenuBtn = QS("#close-nav-button");
     this.homeButton = QS("#home-button");
     this.homeSection = QS(".home-section");
@@ -19,23 +17,19 @@ export default class NavigationHandler extends Navigation {
       let currentPosition = window.scrollY;
 
       this.sideMenuAside.classList.remove("opacity");
-      
       setTimeout(() => this.sideMenu.classList.remove("open-side-menu"), 200);
       setTimeout(() => {
+        this.navMenu.classList.remove("hide-nav-menu");
         currentPosition >= this.homeSection.clientHeight + 100
           ? this.homeButton.classList.add("display-home-button")
           : this.homeButton.classList.remove("display-home-button");
-
-        this.navMenu.classList.remove("hide-nav-menu");
       }, 500);
     };
-    
+
     this.openSideMenu = () => {
       this.navMenu.classList.add("hide-nav-menu");
-
       setTimeout(() => {
         this.homeButton.classList.remove("display-home-button");
-        
         setTimeout(() => this.sideMenu.classList.add("open-side-menu"), 50);
         setTimeout(() => this.sideMenuAside.classList.add("opacity"), 500);
       }, 300);
@@ -60,14 +54,21 @@ export default class NavigationHandler extends Navigation {
         ? this.homeButton.classList.add("display-home-button")
         : this.homeButton.classList.remove("display-home-button");
     };
+
+    this.navigationHandlerInitiator = () => {
+      if (window.innerWidth < 800) {
+        this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
+        this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
+      } else {
+        this.openSideMenuBtn.removeEventListener("click", this.openSideMenu);
+        this.closeSideMenuBtn.removeEventListener("click", this.closeSideMenu);
+      };
+    }
   }
 
-  initiateHandler() {
+  initiate() {
+    window.addEventListener("resize", this.navigationHandlerInitiator);
     window.addEventListener("scroll", this.scrollEvent);
-    
-    if (window.innerWidth < 912) {
-      this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
-      this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
-    };
+    this.navigationHandlerInitiator();
   }
 }
