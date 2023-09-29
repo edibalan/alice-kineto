@@ -1,11 +1,10 @@
 "use strict";
 import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
-
 export default class Navigation {
   constructor(data) {
     this.data = data;
     this.navMenuComponents = ["", "", ""];
-    
+  
     this.renderNavMenuComponents = () => {
       for(let i = 0; i < 4; i++) {
         this.navMenuComponents[0] += `
@@ -17,7 +16,7 @@ export default class Navigation {
         
         this.navMenuComponents[2] += `
           <li class="fs-small">
-            <a href="index.html${data["navigation-locations"][i]}" target="_self">${data["navigation-labels"][i]}</a>
+            <a href="${data["navigation-links"][i]}">${data["navigation-labels"][i]}</a>
           </li>
         `;
       };
@@ -55,7 +54,7 @@ export default class Navigation {
     return `
       <div class="nav-container">
         <div class="nav-content | grid-element">
-          <a href="/"><img alt="Alice Kineto Logo" class="logo" data-type="primary-logo" src="https://edibalan.github.io/alice-kineto/assets/logo.webp" /></a>
+          <a href="/"><img alt="Alice Kineto Logo" class="logo" data-type="primary-logo" src="/assets/logo.webp" /></a>
 
           <nav class="primary-nav">
             <ul aria-label="Navigation Menu" class="nav-menu | grid-element" role="list">${this.renderNavMenuComponents()}</ul>
