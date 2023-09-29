@@ -7,11 +7,9 @@ export default class Services {
       let paragraphs = ["", "", "", ""];
 
       for (let i = 0; i < data["services-descriptions"][index].length; i++) {
-        if (data["services-descriptions"][index][i] !== " " && data["services-descriptions"][index][i + 1] !== " ") {
-          paragraphs[index] += data["services-descriptions"][index][i].concat("&shy");
-        } else {
-          paragraphs[index] += data["services-descriptions"][index][i];
-        };
+        data["services-descriptions"][index][i] !== " " && data["services-descriptions"][index][i + 1] !== " "
+          ? paragraphs[index] += data["services-descriptions"][index][i].concat("&shy")
+          : paragraphs[index] += data["services-descriptions"][index][i];
       };
       
       return paragraphs[index];
@@ -23,8 +21,7 @@ export default class Services {
       for(let i = 0; i < data["services-descriptions"].length; i++) {
         elements += `
           <div class="service-element | grid-element">
-            <img alt="Kinetotherapy illustration" class="service-image" id="image-${i + 1}"
-              src="https://edibalan.github.io/alice-kineto/assets/${data["services-images"][i]}" />
+            <img alt="Kinetotherapy illustration" class="service-image" id="image-${i + 1}" src="/assets/${data["services-images"][i]}" />
             <div class="service-element-content">
               <h2 class="service-title | fs-sm-large fw-bold">${data["services-titles"][i]}</h2>
               <p class="service-description" id="description-${i + 1}">${this.renderDescriptions(i)}</p>
