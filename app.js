@@ -42,10 +42,10 @@ class App {
         this.body.insertAdjacentElement("afterbegin", this.header);
 
         setTimeout(() => {
-          new NavigationHandler().initiateHandler();
-          new ServicesHandler().initiateHandler();
-          new GalleryHandler().initiateHandler();
-          new PricesHandler(data).initiateHandler();
+          new NavigationHandler().initiate();
+          new ServicesHandler().initiate();
+          new GalleryHandler().initiate();
+          new PricesHandler(data).initiate();
         }, 100);
       } else console.log(`Something went wrong. Status code: ${request.status}`);
     } catch (error) {
