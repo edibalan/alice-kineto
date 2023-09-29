@@ -33,12 +33,8 @@ export default class Gallery {
             <h1 class="fs-large fw-bold">Galerie</h1>
             <div class="title-underline"></div>
           </div>
-          <div class="gallery-content | grid-element">  <!--  | grid-element -->
-            ${this.renderGallery()}
-          </div>
-          <div class="gallery-nav | grid-element">
-            ${this.renderNavigation()}
-          </div>
+          <div class="gallery-content | grid-element">${this.renderGallery()}</div>
+          <div class="gallery-nav | grid-element">${this.renderNavigation()}</div>
         </div>
       </section>
     `;
