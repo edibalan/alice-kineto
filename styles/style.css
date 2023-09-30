@@ -158,9 +158,7 @@ a, button {
   padding-inline: 0.9375rem;
 }
 
-[data-type="contact-button"]:active, [data-type="home-button"]:active, [data-type="gallery-button"]:active,
-  .prices-list th {color: var(--white);}
-
+[data-type="contact-button"]:active, [data-type="home-button"]:active, [data-type="gallery-button"]:active, .prices-list th {color: var(--white);}
 [data-type="contact-button"]:active, [data-type="gallery-button"]:active {
   background-color: var(--blue-100);
   border-color: var(--blue-100);
@@ -234,7 +232,7 @@ a, button {
 .prices-list col {width: 68%;}
 .prices-list thead {background-color: var(--blue-100);}
 .prices-list th, .prices-list td {line-height: 1.125rem;}
-.prices-list th {padding-block: 0.5rem;}
+.prices-list th {padding-block: 0.5rem; text-shadow: 0px 0px 3px black;}
 .prices-list td {padding-block: 0.7625rem;}
 
 .contact-section {padding-block: 1.375rem;}
