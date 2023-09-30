@@ -45,7 +45,7 @@ export default class Services {
           </div>
           <div class="services-content | grid-element">${this.renderElements()}</div>
         </div>
-        <a aria-label="Home" onclick="window.scrollTo(0, 0)">
+        <a onclick="window.scrollTo(0, 0)">
           <button class="button | fs-sm-large" data-type="home-button" id="home-button">
             <i class="fa-sharp fa-solid fa-house"></i>
           </button>
