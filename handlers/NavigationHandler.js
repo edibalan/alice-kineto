@@ -1,10 +1,10 @@
 "use strict";
 import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
-
 export default class NavigationHandler extends Navigation {
   constructor() {
     super();
+    
     this.closeMenuBtn = QS("#close-menu-button");
     this.homeButton = QS("#home-button");
     this.homeSection = QS(".home");
@@ -31,6 +31,7 @@ export default class NavigationHandler extends Navigation {
 
     this.openMenu = () => {
       this.navigation.classList.add("hidden");
+      
       setTimeout(() => {
         this.homeButton.classList.remove("displayed");
         setTimeout(() => this.menu.classList.add("opened"), 50);
