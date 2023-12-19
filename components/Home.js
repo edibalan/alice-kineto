@@ -10,8 +10,8 @@ export default class Home {
       for (let i = 0; i < descriptions.length; i++) {
         for (let j = 0; j < descriptions[i].length; j++) {
           descriptions[i][j] !== " " && descriptions[i][j + 1] !== " "
-            ? (paragraphs[i] += descriptions[i][j].concat("&shy"))
-            : (paragraphs[i] += descriptions[i][j]);
+            ? paragraphs[i] += descriptions[i][j].concat("&shy")
+            : paragraphs[i] += descriptions[i][j];
         }
       }
 
