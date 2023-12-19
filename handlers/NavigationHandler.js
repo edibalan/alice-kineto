@@ -8,11 +8,11 @@ export default class NavigationHandler extends Navigation {
     this.closeMenuBtn = QS("#close-menu-button");
     this.homeButton = QS("#home-button");
     this.homeSection = QS(".home");
+    this.menu = QS(".menu");
+    this.menuAside = QS(".menu__aside");
     this.navigation = QS(".nav");
     this.openMenuBtn = QS("#open-menu-button");
     this.previousPosition = window.scrollY;
-    this.menu = QS(".menu");
-    this.menuAside = QS(".menu__aside");
 
     this.closeMenu = () => {
       let currentPosition = window.scrollY;
