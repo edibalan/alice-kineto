@@ -1,24 +1,27 @@
 "use strict";
 import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Gallery from "https://edibalan.github.io/alice-kineto/components/Gallery.js";
+
 export default class GalleryHandler extends Gallery {
   constructor() {
     super();
-    this.galleryContent = QS(".gallery-content");
-    this.galleryImages = QSAll(".gallery-image");
-    this.galleryNavigation = QSAll("#backward-button, #forward-button");
 
-    this.toNextImage = () => this.galleryContent.scrollLeft += this.galleryContent.clientWidth;
-    this.toPreviousImage = () => this.galleryContent.scrollLeft -= this.galleryContent.clientWidth;
+    this.backwardButton = QS("#backward-button");
+    this.forwardButton = QS("#forward-button");
+    this.content = QS(".gallery__content");
+    this.images = QSAll(".gallery__content__img");
+
+    this.toNextImage = () => this.content.scrollLeft += this.content.clientWidth;
+    this.toPreviousImage = () => this.content.scrollLeft -= this.content.clientWidth;
 
     this.zoomIn = event => {
       const elem = event.target;
-      
-      elem.classList.add("zoom");
-      elem.style.height = `${this.galleryContent.clientHeight + 1}px`;
-      elem.style.width = `${this.galleryContent.clientWidth + 1}px`;
 
-      this.galleryContent.style.overflowX = "hidden";
+      elem.classList.add("zoomed");
+      elem.style.height = `${this.content.clientHeight + 1}px`;
+      elem.style.width = `${this.content.clientWidth + 1}px`;
+
+      this.content.style.overflowX = "hidden";
 
       elem.removeEventListener("click", this.zoomIn);
       elem.addEventListener("click", this.zoomOut);
@@ -26,8 +29,8 @@ export default class GalleryHandler extends Gallery {
 
     this.zoomOut = event => {
       const elem = event.target;
-      
-      elem.classList.remove("zoom");
+
+      elem.classList.remove("zoomed");
       elem.style.height = "auto";
       elem.style.width = "auto";
 
@@ -39,28 +42,25 @@ export default class GalleryHandler extends Gallery {
 
     this.navigationHandler = () => {
       if (window.innerWidth < 460) {
-        this.galleryNavigation[0].addEventListener("click", this.toPreviousImage);
-        this.galleryNavigation[1].addEventListener("click", this.toNextImage);
-        this.galleryImages.forEach(image => image.removeEventListener("click", this.zoomIn));
-      } else {
-        this.galleryNavigation[0].removeEventListener("click", this.toPreviousImage);
-        this.galleryNavigation[1].removeEventListener("click", this.toNextImage);
-        this.galleryImages.forEach(image => image.addEventListener("click", this.zoomIn));
+        this.backwardButton.addEventListener("click", this.toPreviousImage);
+        this.forwardButton.addEventListener("click", this.toNextImage);
+        this.images.forEach(image => image.removeEventListener("click", this.zoomIn));
+      }
+       else {
+        this.backwardButton.removeEventListener("click", this.toPreviousImage);
+        this.forwardButton.removeEventListener("click", this.toNextImage);
+        this.images.forEach(image => image.addEventListener("click", this.zoomIn));
       };
     };
 
-    this.scrollbarHandler = () => {
-      window.innerWidth >= 460 && window.innerWidth < 800
-        ? this.galleryContent.style.overflowX = "scroll"
-        : this.galleryContent.style.overflowX = "hidden";
-    };
+    this.scrollbarHandler = () => window.innerWidth < 460 ? this.content.style.overflowX = "hidden" : this.content.style.overflowX = "scroll";
   }
 
   initiate() {
-    window.addEventListener("resize", this.navigationHandler);
-    window.addEventListener("resize", this.scrollbarHandler);
-    
     this.navigationHandler();
     this.scrollbarHandler();
+
+    window.addEventListener("resize", this.navigationHandler);
+    window.addEventListener("resize", this.scrollbarHandler);
   }
 }
