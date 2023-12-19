@@ -1,57 +1,75 @@
 "use strict";
 import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
 import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
+
 export default class PricesHandler extends Prices {
   constructor(data) {
     super(data);
-    this.price = QS("#price");
-    this.pricesButton = QS(".prices-button");
-    this.pricesList = QS(".prices-services-list");
+    this.breakpoints = [359, 425, 539, 599, 710, 799, 1439, 9999];
+
+    this.button = QS(".prices__button");
+    this.table = QS(".prices__table");
+    this.tableHeader = QS(".prices__table__header");
+    this.tableBody = QS(".prices__table__body");
+    
     this.time = QS("#time");
+    this.price = QS("#price");
 
-    this.extendPricesList = event => {
+    this.extendTable = event => {
       const button = event.target;
-      button.innerText = "Mai putin";
-     
-      this.pricesList.innerHTML = this.renderPricesList(data["prices-services"].length);
+      const tableRows = QS(".prices__table__body").children;
 
-      button.removeEventListener("click", this.extendPricesList);
-      button.addEventListener("click", this.shrinkPricesList);
+      button.innerText = "Mai putin";
+
+      this.tableBody.innerHTML = this.renderTableBody(data.prices.services.length);
+
+      setTimeout(() => {
+        for (let i = 0; i < tableRows.length; i++) {
+          tableRows[i].style.height = `${this.tableHeader.clientHeight}px`;
+        };
+      }, 10);
+   
+      button.removeEventListener("click", this.extendTable);
+      button.addEventListener("click", this.shrinkTable);
     };
 
-    this.shrinkPricesList = event => {
+    this.shrinkTable = event => {
       const button = event.target;
       button.innerText = "Mai mult";
 
-      this.pricesListLengthHandler();
+      this.tableBodyHandler();
 
-      button.removeEventListener("click", this.shrinkPricesList);
-      button.addEventListener("click", this.extendPricesList);
+      button.removeEventListener("click", this.shrinkTable);
+      button.addEventListener("click", this.extendTable);
     };
 
-    this.pricesListLengthHandler = () => {
-      const width = window.innerWidth;
-
-      if (width < 460) this.pricesList.innerHTML = this.renderPricesList(4);
-      else if (width >= 460 && width < 600) this.pricesList.innerHTML = this.renderPricesList(5);
-      else if (width >= 600 && width < 712) this.pricesList.innerHTML = this.renderPricesList(6);
-      else if (width >= 712 && width < 912) this.pricesList.innerHTML = this.renderPricesList(7);
-      else if (width >= 912 && width < 1440) this.pricesList.innerHTML = this.renderPricesList(8);
-      else if (width >= 1440 && width < 1600) this.pricesList.innerHTML = this.renderPricesList(9);
-      else this.pricesList.innerHTML = this.renderPricesList(10);
+    this.tableBodyHandler = () => {
+      for (let i = 0; i <= this.breakpoints.length; i++) {
+        if (window.innerWidth <= this.breakpoints[i]) {
+          return this.tableBody.innerHTML = this.renderTableBody(i + 3);
+        };
+      }
     };
 
-    this.pricesListTitlesHandler = () => {
-      window.innerWidth < 460 ? this.time.innerHTML = "TIMP<br>MIN" : this.time.innerHTML = "TIMP";
-      window.innerWidth < 460 ? this.price.innerHTML = "PRET<br>RON" : this.price.innerHTML = "PRET";
+    this.tableHeaderHandler = () => {
+      if (window.innerWidth < 460) {
+        this.time.innerHTML = "TIMP<br>MIN";
+        this.price.innerHTML = "PRET<br>RON"
+      } else {
+        this.time.innerHTML = "TIMP";
+        this.price.innerHTML = "PRET";
+      };
     };
   }
 
   initiate() {
-    window.addEventListener("resize", this.pricesListLengthHandler);
-    window.addEventListener("resize", this.pricesListTitlesHandler);
-    this.pricesButton.addEventListener("click", this.extendPricesList);
-    this.pricesListLengthHandler();
-    this.pricesListTitlesHandler();
+    this.tableBodyHandler();
+    this.tableHeaderHandler();
+
+    this.button.addEventListener("click", this.extendTable);
+
+    window.addEventListener("resize", this.tableBodyHandler);
+    window.addEventListener("resize", this.tableHeaderHandler);
   }
 }
+
