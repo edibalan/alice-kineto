@@ -4,22 +4,23 @@ export default class Gallery {
     this.renderGallery = () => {
       let gallery = "";
 
-      for(let i = 0; i < data["gallery-images"].length; i++) {
-        gallery += `<img alt="Kinetotherapy clinic photo" class="gallery-image" src="https://edibalan.github.io/alice-kineto/assets/${data["gallery-images"][i]}" />`;
-      };
+      for (let i = 0; i < data.gallery.images.length; i++) {
+        gallery += `<img alt="Kinetotherapy clinic photo" class="gallery__content__img" src="https://edibalan.github.io/alice-kineto/assets/${data.gallery.images[i]}">`;
+      }
 
       return gallery;
     };
 
     this.renderNavigation = () => {
       let navigation = "";
-      
-      for(let i = 0; i < 2; i++) {
+
+      for (let i = 0; i < 2; i++) {
         navigation += `
-          <button class="button | fs-x-small fw-sm-bold" data-type="gallery-button"
-            id="${data["gallery-nav-buttons"].id[i]}">${data["gallery-nav-buttons"].name[i]}</button>
+          <button class="gallery__nav__button" id="${data.gallery.buttons.id[i]}">
+            ${data.gallery.buttons.name[i]}
+          </button>
         `;
-      };
+      }
 
       return navigation;
     };
@@ -27,16 +28,19 @@ export default class Gallery {
 
   render() {
     return `
-      <section class="gallery-section">
-        <div class="container" id="gallery">
-          <div class="section-title">
-            <h1 class="fs-large fw-bold">Galerie</h1>
-            <div class="title-underline"></div>
+      <article class="gallery" id="gallery">
+        <section class="gallery__container | container">
+          <h2 class="gallery__title">Galerie</h2>
+
+          <div class="gallery__content | grid-element">
+            ${this.renderGallery()}
           </div>
-          <div class="gallery-content | grid-element">${this.renderGallery()}</div>
-          <div class="gallery-nav | grid-element">${this.renderNavigation()}</div>
-        </div>
-      </section>
+
+          <div class="gallery__nav | grid-element">
+            ${this.renderNavigation()}
+          </div>
+        </section>
+      </article>
     `;
   }
 }
