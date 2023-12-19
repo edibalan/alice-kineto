@@ -4,7 +4,7 @@ import Home from "https://edibalan.github.io/alice-kineto/components/Home.js";
 import Services from "https://edibalan.github.io/alice-kineto/components/Services.js";
 import Gallery from "https://edibalan.github.io/alice-kineto/components/Gallery.js";
 import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
-import Contact from "https://edibalan.github.io/alice-kineto/components/Contact.js";
+import Contact from "https://edibalan.github.io/alice-kineto/components/Footer.js";
 
 import NavigationHandler from "https://edibalan.github.io/alice-kineto/handlers/NavigationHandler.js";
 import ServicesHandler from "https://edibalan.github.io/alice-kineto/handlers/ServicesHandler.js";
