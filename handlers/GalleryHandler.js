@@ -1,7 +1,6 @@
 "use strict";
 import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Gallery from "https://edibalan.github.io/alice-kineto/components/Gallery.js";
-
 export default class GalleryHandler extends Gallery {
   constructor() {
     super();
@@ -53,7 +52,11 @@ export default class GalleryHandler extends Gallery {
       };
     };
 
-    this.scrollbarHandler = () => window.innerWidth < 460 ? this.content.style.overflowX = "hidden" : this.content.style.overflowX = "scroll";
+    this.scrollbarHandler = () => {
+      window.innerWidth < 460
+        ? this.content.style.overflowX = "hidden"
+        : this.content.style.overflowX = "scroll";
+    }
   }
 
   initiate() {
