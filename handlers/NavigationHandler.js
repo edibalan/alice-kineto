@@ -1,74 +1,80 @@
 "use strict";
 import { QS, QSAll } from "https://edibalan.github.io/alice-kineto/app.js";
 import Navigation from "https://edibalan.github.io/alice-kineto/components/Navigation.js";
+
 export default class NavigationHandler extends Navigation {
   constructor() {
     super();
-    this.closeSideMenuBtn = QS("#close-nav-button");
+    this.closeMenuBtn = QS("#close-menu-button");
     this.homeButton = QS("#home-button");
-    this.homeSection = QS(".home-section");
-    this.navMenu = QS(".nav-container");
-    this.openSideMenuBtn = QS("#open-nav-button");
+    this.homeSection = QS(".home");
+    this.navigation = QS(".nav");
+    this.openMenuBtn = QS("#open-menu-button");
     this.previousPosition = window.scrollY;
-    this.sideMenu = QS(".side-menu-container");
-    this.sideMenuAside = QS(".side-menu-aside");
+    this.menu = QS(".menu");
+    this.menuAside = QS(".menu__aside");
 
-    this.closeSideMenu = () => {
+    this.closeMenu = () => {
       let currentPosition = window.scrollY;
 
-      this.sideMenuAside.classList.remove("opacity");
-      setTimeout(() => this.sideMenu.classList.remove("open-side-menu"), 200);
+      this.menuAside.classList.remove("opacity");
+      setTimeout(() => this.menu.classList.remove("opened"), 200);
       setTimeout(() => {
-        this.navMenu.classList.remove("hide-nav-menu");
+        this.navigation.classList.remove("hidden");
+        
         currentPosition >= this.homeSection.clientHeight + 100
-          ? this.homeButton.classList.add("display-home-button")
-          : this.homeButton.classList.remove("display-home-button");
+          ? this.homeButton.classList.add("displayed")
+          : this.homeButton.classList.remove("displayed");
+        
       }, 500);
     };
 
-    this.openSideMenu = () => {
-      this.navMenu.classList.add("hide-nav-menu");
+    this.openMenu = () => {
+      this.navigation.classList.add("hidden");
       setTimeout(() => {
-        this.homeButton.classList.remove("display-home-button");
-        setTimeout(() => this.sideMenu.classList.add("open-side-menu"), 50);
-        setTimeout(() => this.sideMenuAside.classList.add("opacity"), 500);
+        this.homeButton.classList.remove("displayed");
+        setTimeout(() => this.menu.classList.add("opened"), 50);
+        setTimeout(() => this.menuAside.classList.add("opacity"), 500);
       }, 300);
     };
 
     this.scrollEvent = () => {
       let currentPosition = window.scrollY;
 
-      this.sideMenuAside.classList.remove("opacity");
-      setTimeout(() => this.sideMenu.classList.remove("open-side-menu"), 150);
+      this.menuAside.classList.remove("opacity");
+      setTimeout(() => this.menu.classList.remove("opened"), 150);
 
       this.previousPosition > currentPosition
-        ? setTimeout(() => this.navMenu.classList.remove("hide-nav-menu"), 400)
-        : this.navMenu.classList.add("hide-nav-menu");
+        ? setTimeout(() => this.navigation.classList.remove("hidden"), 400)
+        : this.navigation.classList.add("hidden");
       this.previousPosition = currentPosition;
-      
+
       this.previousPosition > 0
-        ? this.navMenu.classList.add("box-shadow")
-        : this.navMenu.classList.remove("box-shadow");
+        ? this.navigation.classList.add("box-shadow")
+        : this.navigation.classList.remove("box-shadow");
 
       currentPosition >= this.homeSection.clientHeight + 100
-        ? this.homeButton.classList.add("display-home-button")
-        : this.homeButton.classList.remove("display-home-button");
+        ? this.homeButton.classList.add("displayed")
+        : this.homeButton.classList.remove("displayed");
     };
 
     this.navigationHandlerInitiator = () => {
-      if (window.innerWidth < 800) {
-        this.openSideMenuBtn.addEventListener("click", this.openSideMenu);
-        this.closeSideMenuBtn.addEventListener("click", this.closeSideMenu);
-      } else {
-        this.openSideMenuBtn.removeEventListener("click", this.openSideMenu);
-        this.closeSideMenuBtn.removeEventListener("click", this.closeSideMenu);
-      };
-    }
+      if (window.innerWidth < 768) {
+        this.openMenuBtn.addEventListener("click", this.openMenu);
+        this.closeMenuBtn.addEventListener("click", this.closeMenu);
+      } 
+      
+      else {
+        this.openMenuBtn.removeEventListener("click", this.openMenu);
+        this.closeMenuBtn.removeEventListener("click", this.closeMenu);
+      }
+    };
   }
 
   initiate() {
+    this.navigationHandlerInitiator();
+
     window.addEventListener("resize", this.navigationHandlerInitiator);
     window.addEventListener("scroll", this.scrollEvent);
-    this.navigationHandlerInitiator();
   }
 }
