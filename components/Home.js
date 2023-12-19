@@ -4,41 +4,42 @@ export default class Home {
     this.data = data;
 
     this.renderDescriptions = () => {
+      const descriptions = data["home-descriptions"];
       let paragraphs = ["", ""];
 
-      for (let i = 0; i < data["home-descriptions"].length; i++) {
-        for (let j = 0; j < data["home-descriptions"][i].length; j++) {
-          if (data["home-descriptions"][i][j] !== " " && data["home-descriptions"][i][j + 1] !== " ") {
-            paragraphs[i] += data["home-descriptions"][i][j].concat("&shy");
-          } else {
-            paragraphs[i] += data["home-descriptions"][i][j];
-          };
-        };
-      };
+      for (let i = 0; i < descriptions.length; i++) {
+        for (let j = 0; j < descriptions[i].length; j++) {
+          descriptions[i][j] !== " " && descriptions[i][j + 1] !== " "
+            ? (paragraphs[i] += descriptions[i][j].concat("&shy"))
+            : (paragraphs[i] += descriptions[i][j]);
+        }
+      }
 
-      return `
-        <p>${paragraphs[0]}</p>
-        <p>${paragraphs[1]}</p>
-      `;
+      return `${paragraphs[0]}<br><br>${paragraphs[1]}`;
     };
   }
 
   render() {
     return `
-      <section class="home-section | grid-element">
-        <div class="home-container | container grid-element">
-          <div class="home-content">
-            <h1 class="home-title | fs-large fw-bold">Bun venit !</h1>
-            <div class="home-description">${this.renderDescriptions()}</div>
-            <a href="${this.data["contact-links"][1]}">
-              <button class="button | fs-x-small fw-sm-bold" data-type="contact-button">Programare consultatie</button>
+      <article class="home">
+        <div class="home__container | container grid-element">
+          <img alt="Kinetotherapy picture" class="home__image" src="https://edibalan.github.io/alice-kineto/assets/${this.data.services.images[1]}">
+
+          <section class="home__content">
+            <h1 class="home__title">
+              Bun venit !
+            </h1>
+
+            <p class="home__description">
+              ${this.renderDescriptions()}
+            </p>
+            
+            <a href="${this.data.menu.contact.links[1]}">
+              <button class="home__button">Programare consultatie</button>
             </a>
-          </div>
-          <div>
-            <img alt="Kinetotherapy illustration" class="home-image" src="https://edibalan.github.io/alice-kineto/assets/${this.data["services-images"][1]}" />
-          </div>
+          </section>
         </div>
-      </section>
+      </article>
     `;
   }
 }
