@@ -1,0 +1,8 @@
+@use "./variables" as *;
+
+// Set 'font-size' property for each element from map
+@each $key, $value in $fs-sizes-map {
+  #{$key} {
+    font-size: $value;
+  }
+}

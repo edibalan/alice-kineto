@@ -1,0 +1,61 @@
+@use "../utilities/variables" as *;
+
+.prices {
+  padding-top: 4.375rem;
+  padding-bottom: 8.75rem;
+
+  // WIDTH >= 768px
+  @media (min-width: 48em) {
+    padding-top: 6.25rem;
+    padding-bottom: 12.5rem;
+  }
+
+  &__table {
+    aspect-ratio: 1 / 0.675;
+    border-collapse: collapse;
+    border-color: $blue-100;
+    border-inline: 1px solid transparent;
+    margin: 2vh 0 1.25vh;
+    width: 100%;
+
+    & col {
+      width: 65%;
+
+      // WIDTH >= 460px
+      @media (min-width: 28.75em) {
+        width: auto;
+      }
+    }
+ 
+    & thead {
+      background-color: $blue-100;
+    }
+
+    &__header, &__body {
+      text-align: left;
+    }
+
+    & th {
+      color: $white;
+      font-weight: $fw-sb;
+      letter-spacing: 0.02rem;
+      padding-block: 0.125rem;
+      text-transform: uppercase;
+
+      // Set the padding size for prices table header at different breakpoints
+      @each $breakpoint, $size in $prices-table-header-spacing {
+        @media (min-width: $breakpoint) {
+          padding-block: $size;
+        }
+      }
+    }
+  }
+
+  &__table__header, &__services {
+    padding-left: 0.5rem;
+  }
+
+  &__times, &__costs {
+    text-align: center;
+  }
+}

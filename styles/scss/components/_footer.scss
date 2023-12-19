@@ -1,0 +1,67 @@
+@use "../utilities/variables" as *;
+
+.footer {
+  background-color: $blue-100;
+  padding-block: 2.5vh;
+
+  &__navigation {
+    &__menu {
+      row-gap: 3vh;
+
+      .program {
+        & .secondary-logo {
+          margin-bottom: 1.25rem;
+          max-width: 100%;
+        }
+
+        &, &__content, &__content li {
+          width: 100%;
+        }
+
+        &__content li {
+          grid-auto-flow: column;
+          justify-content: space-between;
+        }
+      }
+
+      .program, .contact, .meniu {
+        text-align: left;
+      }
+
+      .program__title, .contact__title, .meniu__title {
+        font-weight: $fw-sb;
+        margin-bottom: 1.25vh;
+      }
+
+      .program__content li, .contact__content li, .meniu__content li {
+        padding-block: 0.75vh;
+      }
+
+      .contact__link:active, & a:hover {
+        border-bottom: 1px solid $black;
+        color: $black;
+      }
+
+      // WIDTH >= 768px
+      @media (min-width: 48em) {
+        display: grid;
+        grid-template-columns: 30% 40% 10%;
+        justify-content: space-between;
+
+        & .meniu {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  &__copyright {
+    margin: 2.5rem auto -0.375rem;
+    text-transform: uppercase;
+
+    & p {
+      font-size: $fs-xs;
+      font-weight: $fw-sb;
+    }
+  }
+}

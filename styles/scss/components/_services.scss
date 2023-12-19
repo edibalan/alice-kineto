@@ -1,0 +1,125 @@
+@use "../utilities/variables" as *;
+
+.services {
+  padding-block: 4.375rem;
+
+  // WIDTH >= 768px
+  @media (min-width: 48em) {
+    padding-block: 6.25rem;
+  }
+
+  &__content {
+    margin-top: 5vh;
+    row-gap: 6vh;
+
+    // Set the size for each column of services content at different breakpoints
+    @each $breakpoint, $size in $services-content-cols-size {
+      @media (min-width: $breakpoint) {
+        grid-template-columns: $size;
+      }
+    }
+
+    // Set the gap size of services content at different breakpoints
+    @each $breakpoint, $size in $services-content-gap-size {
+      @media (min-width: $breakpoint) {
+        gap: $size;
+      }
+    }
+
+    @media (min-height: 45em) and (orientation: landscape) {
+      gap: 17vh;
+    }
+  }
+
+  &__element {
+    // WIDTH >= 912px
+    @media (min-width: 57em) {
+      align-items: center;
+      grid-auto-flow: column;
+      justify-content: space-between;
+
+      #image-2, #image-4 {
+        order: 1;
+      }
+    }
+
+    // Set the size for each column of services elements at different breakpoints
+    @each $breakpoint, $map in $services-elements-cols-size {
+      $even-cols: map-get($map, "even");
+      $odd-cols: map-get($map, "odd");
+
+      @media (min-width: $breakpoint) {
+        &:nth-of-type(even) {
+          grid-template-columns: $even-cols;
+        }
+
+        &:nth-of-type(odd) {
+          grid-template-columns: $odd-cols;
+        }
+      }
+    }
+
+    &__image, &__description, &__title {
+      margin-inline: auto;
+    }
+
+    &__content {
+      margin-top: 1.5vh;
+
+      // WIDTH >= 912px
+      @media (min-width: 57em) {
+        margin: 0;
+      }
+    }
+
+    &__description {
+      line-height: 1.4rem;
+      margin-block: 1vh;
+      max-height: 8.5rem;
+      overflow: hidden;
+      text-align: left;
+      width: 97%;
+
+      // Set the height for each Service Description at different breakpoints
+      @each $breakpoint, $size in $services-descriptions-height {
+        @media (min-width: $breakpoint) {
+          max-height: $size;
+        }
+      }
+
+      &.extended {
+        max-height: 100%;
+      }
+    }
+  }
+
+  &__button {
+    background-color: $white;
+    border: 1px solid $black;
+    border-radius: 0.375rem;
+    bottom: 1rem;
+    display: none;
+    padding: 0.375rem;
+    position: fixed;
+    right: 1rem;
+    z-index: 1;
+
+    @media (min-width: 28.75em) {
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+
+    &.displayed {
+      display: block;
+    }
+  }
+
+  &__element__title {
+    text-transform: uppercase;
+  }
+}

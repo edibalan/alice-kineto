@@ -1,0 +1,134 @@
+// Colors
+$black: hsl(0, 0%, 0%);
+$blue-500: hsl(218, 87%, 64%);
+$blue-300: hsl(218, 85%, 70%);
+$blue-100: hsl(218, 82%, 75%);
+$grey-300: hsl(0, 0%, 67%);
+$grey-100: hsl(0, 0%, 87%);
+$white: hsl(0, 0%, 100%);
+
+// Font size
+$fs-xs: 0.875rem;
+$fs-sm: 1.0625rem;
+$fs-md: 1.125rem;
+$fs-lg: 1.375rem;
+$fs-xl: 1.5rem;
+$fs-btn: 1.9rem;
+
+$fs-sizes-map: (
+  "h1": $fs-xl,
+  "h2": $fs-lg,
+  "h3": $fs-md,
+  "p": $fs-sm,
+  "a, li, button": $fs-xs,
+);
+
+// Font weight
+$fw-lt: 300;
+$fw-sb: 500;
+$fw-bd: 600;
+
+// Container width
+$container-width: (
+  "57em": 50em,
+  "90em": 56.25em,
+  "105em": 59.375em,
+  "120em": 62.5em,
+);
+
+// Navigation spacing
+$nav-spacing: (
+  "28.75em": 1rem,
+  "44.5em": 1.25rem 1.5rem,
+  "52.1em": 1.5rem 1.75rem,
+  "64em": 0.75rem 0,
+);
+
+// Navigation width
+$nav-width: (
+  "64em": 53.125rem,
+  "90em": 59.375rem,
+  "105em": 62.5rem,
+  "120em": 65.625em,
+);
+
+// Home background size
+$home-background-size: (
+  "43.75em": 84rem,
+  "46.75em": 90rem,
+  "50em": 95em,
+  "56.25em": 100em,
+);
+
+// Home container width
+$home-container-width: (
+  "28.75em": 86%,
+  "37.5em": 84%,
+  "44.5em": 80%,
+  "48em": 78%,
+  "64em": auto,
+);
+
+// Home container columns size
+$home-container-cols-size: (
+  "64em": 60% 42.5%,
+  "90em": 55% 45%,
+  "105em": 52% 46%,
+  "120em": 50% 45%,
+);
+
+// Services content columns size
+$services-content-cols-size: (
+  "28.75em": repeat(2, 1fr),
+  "57em": auto,
+);
+
+// Services content gap size
+$services-content-gap-size: (
+  "28.75em": 1.25rem,
+  "48em": 1.75rem,
+  "57em": 5.5rem,
+  "90em": 7rem,
+);
+
+// Services elements columns size
+$services-elements-cols-size: (
+  "57em": (
+    even: 54% 42%,
+    odd: 42% 54%,
+  ),
+
+  "64em": (
+    even: 57% 39%,
+    odd: 39% 57%,
+  ),
+);
+
+// Services descriptions height
+$services-descriptions-height: (
+  "28.75em": 5.75rem,
+  "37.5em": 7rem,
+  "48em": 8.5rem,
+  "57em": 4.25rem,
+);
+
+// Gallery content columns size
+$gallery-content-cols-size: (
+  "28.75em": repeat(5, 48%),
+  "57em": repeat(3, 1fr),
+);
+
+// Gallery content gap size
+$gallery-content-gap-size: (
+  "28.75em": 1.25rem,
+  "48em": 1.75rem,
+  "57em": 1rem,
+);
+
+// Prices table header spacing
+$prices-table-header-spacing: (
+  "28.75em": 0.75rem,
+  "48em": 0.875rem,
+  "90em": 1rem,
+  "105em": 1.125rem,
+);

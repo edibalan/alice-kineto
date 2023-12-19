@@ -1,0 +1,191 @@
+@use "../utilities/variables" as *;
+
+@mixin font-rules {
+  font-size: $fs-btn;
+  font-weight: $fw-lt;
+}
+
+@mixin grid-alignment($type: space-between) {
+  grid-auto-flow: column;
+  justify-content: $type;
+}
+
+@mixin position-rules {
+  position: fixed;
+  top: 0;
+  transition-duration: 0.5s;
+}
+
+.nav__menu, .menu__aside {
+  display: none;
+}
+
+.nav, .nav__button, .menu, .menu__button, .menu__nav {
+  background-color: $white;
+}
+
+// NAVIGATION STYLE RULES
+.nav {
+  @include position-rules;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 1;
+
+  &__content {
+    @include grid-alignment;
+    align-items: center;
+    margin-inline: auto;
+    padding: 0.5rem;
+
+    // Set the padding size of navigation at different breakpoints
+    @each $breakpoint, $size in $nav-spacing {
+      @media (min-width: $breakpoint) {
+        padding: $size;
+      }
+    }
+
+    // Set the width of navigation at different breakpoints
+    @each $breakpoint, $size in $nav-width {
+      @media (min-width: $breakpoint) {
+        width: $size;
+      }
+    }
+  }
+
+  &__logo {
+    max-width: 9.75rem;
+  }
+
+  &__menu {
+    // WIDTH >= 768px
+    @media (min-width: 48em) {
+      @include grid-alignment(unset);
+      column-gap: 1.75rem;
+      display: grid;
+
+      & li {
+        font-weight: $fw-sb;
+        letter-spacing: 0.04rem;
+
+        & a {
+          font-weight: $fw-bd;
+
+          &:hover {
+            color: $blue-300;
+          }
+        }
+      }
+    }
+  }
+
+  &__button {
+    @include font-rules;
+    margin-top: 0.1rem;
+    transform: rotateZ(90deg);
+
+    // WIDTH >= 768px
+    @media (min-width: 48em) {
+      display: none;
+    }
+  }
+
+  &.box-shadow {
+    box-shadow: 1px 1px 5px $grey-300;
+  }
+
+  &.hidden {
+    top: -7.5rem;
+  }
+}
+
+
+// MENU STYLE RULES
+.menu {
+  @include position-rules;
+  height: 100vh;
+  max-width: 100vw;
+  padding: 0.75vh 5vw;
+  right: -80rem;
+  transition-timing-function: linear;
+
+  // WIDTH >= 460px
+  @media (min-width: 28.75em) {
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    padding: 0;
+  }
+
+  &__aside {
+    // WIDTH >= 460px
+    @media (min-width: 28.75em) {
+      background-color: $blue-100;
+      display: block;
+      height: 100vh;
+      opacity: 0;
+      transition-duration: 0.25s;
+    }
+
+    &.opacity {
+      opacity: 0.275;
+      transition-duration: 0.75s;
+    }
+  }
+
+  &__nav {
+    // WIDTH >= 460px
+    @media (min-width: 28.75em) {
+      padding: 1.25rem;
+    }
+  }
+
+  &__button {
+    @include font-rules;
+    margin-left: auto;
+  }
+
+  &__links {
+    align-items: start;
+    row-gap: 3vh;
+    text-align: left;
+
+    .program {
+      & .secondary-logo {
+        margin: 1vh auto 3.5vh;
+        max-width: 100%;
+
+        // HEIGHT <= 548px
+        @media (max-height: 34.25em) and (orientation: portrait) {
+          display: none;
+        }
+      }
+
+      &, &__content, &__content li {
+        width: 100%;
+      }
+
+      &__content li {
+        @include grid-alignment;
+      }
+    }
+
+    .program__title, .contact__title, .meniu__title {
+      font-weight: $fw-sb;
+      margin-bottom: 1.25vh;
+    }
+
+    .program__content li, .contact__content li, .meniu__content li {
+      padding-block: 0.75vh;
+    }
+
+    .contact__link:hover {
+      border-bottom: 1px solid $black;
+      color: $black;
+    }
+  }
+
+  &.opened {
+    right: 0;
+  }
+}

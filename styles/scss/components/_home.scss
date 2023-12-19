@@ -1,0 +1,98 @@
+@use "../utilities/variables" as *;
+
+.home {
+  @media (min-width: 64em) {
+    background-image: url("/assets/background.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70rem;
+  }
+
+  // Set the size of home background at different breakpoints
+  @each $breakpoint, $size in $home-background-size {
+    @media (min-width: 80em) and (min-height: $breakpoint) {
+      background-size: $size;
+    }
+  }
+  
+  &__container {
+    height: 100vh;
+    margin-top: 3.25rem;
+
+    // HEIGHT >= 728px
+    @media (min-height: 45.5em) {
+      margin-top: 0;
+    }
+
+    // WIDTH >= 1024px
+    @media (min-width: 64em) {
+      align-content: center;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    // Set the width of home container at different breakpoints
+    @each $breakpoint, $size in $home-container-width {
+      @media (min-width: $breakpoint) {
+        width: $size;
+      }
+    }
+
+    // Set the size for each column of home container at different breakpoints
+    @each $breakpoint, $size in $home-container-cols-size {
+      @media (min-width: $breakpoint) {
+        grid-template-columns: $size;
+      }
+    }
+  }
+
+  &__image {
+    margin: auto auto 0;
+  }
+
+  &__content {
+    margin-top: 1.375vh;
+    order: 1;
+
+    // WIDTH >= 1024px
+    @media (min-width: 64em) {
+      margin: auto 0;
+      order: -1;
+    }
+  }
+
+  &__description {
+    line-height: 1.4rem;
+    margin-inline: auto;
+    padding-block: 1vh;
+    text-align: left;
+    width: 96.5%;
+
+    // WIDTH >= 1024px
+    @media (min-width: 64em) {
+      margin: 0;
+    }
+  }
+
+  &__button {
+    border: 1px solid $black;
+    border-radius: 0.375rem;
+    letter-spacing: 0.04rem;
+    margin-top: 0.5vh;
+    padding: 0.875rem;
+    text-transform: uppercase;
+
+    // WIDTH >= 1024px
+    @media (min-width: 64em) {
+      zoom: 0.875;
+    }
+
+    &:hover {
+      background-color: $blue-100;
+      border-color: $blue-100;
+      color: $white;
+    }
+  }
+}

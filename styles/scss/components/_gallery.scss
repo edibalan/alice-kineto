@@ -1,0 +1,103 @@
+@use "../utilities/variables" as *;
+
+@mixin gallery-rules($flow:column, $rows:repeat(2, 1fr), $overflow:scroll, $padding:1.25vh) {
+  grid-auto-flow: $flow;
+  grid-template-rows: $rows;
+  overflow-x: $overflow;
+  padding-bottom: $padding;
+}
+
+.gallery {
+  padding-block: 4.375rem;
+
+  // WIDTH >= 768px
+  @media (min-width: 48em) {
+    padding-block: 6.25rem;
+  }
+
+  &__content {
+    grid-template-columns: repeat(9, 100%);
+    justify-content: space-between;
+    margin-block: 2vh;
+    overflow: hidden;
+
+    // WIDTH >= 460px
+    @media (min-width: 28.75em) {
+      @include gallery-rules;
+      gap: 1rem;
+
+      &::-webkit-scrollbar {
+        background-color: $grey-100;
+        height: 0.625rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $blue-100;
+      }
+    }
+
+    // WIDTH >= 912px
+    @media (min-width: 57em) {
+      @include gallery-rules(row, repeat(3, 1fr), hidden, 0);
+      height: 100%;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    // Set the size for each column of gallery content at different breakpoints
+    @each $breakpoint, $size in $gallery-content-cols-size {
+      @media (min-width: $breakpoint) {
+        grid-template-columns: $size;
+      }
+    }
+    
+    // Set the gap size of gallery content at different breakpoints
+    @each $breakpoint, $size in $gallery-content-gap-size {
+      @media (min-width: $breakpoint) {
+        gap: $size;
+      }
+    }
+
+    &__img {
+      cursor: zoom-in;
+
+      &.zoomed {
+        cursor: zoom-out;
+        position: absolute;
+      }
+    }
+  }
+
+  &__nav {
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 48.25%);
+    justify-content: space-between;
+
+    // WIDTH >= 460px
+    @media (min-width: 28.75em) {
+      display: none;
+    }
+
+    &__button {
+      border: 1px solid $black;
+      border-radius: 0.25rem;
+      letter-spacing: 0.02rem;
+      line-height: 1.125rem;
+      padding-block: 0.25rem;
+      text-transform: uppercase;
+
+      // WIDTH >= 390px
+      @media (min-width: 24.35em) {
+        padding-block: 0.5rem;
+      }
+
+      &:hover {
+        background-color: $blue-100;
+        border-color: $blue-100;
+        color: $white;
+      }
+    }
+  }
+}
