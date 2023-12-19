@@ -3,77 +3,95 @@ import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
 export default class Navigation {
   constructor(data) {
     this.data = data;
-    this.navMenuComponents = ["", "", ""];
-  
-    this.renderNavMenuComponents = () => {
-      for(let i = 0; i < 4; i++) {
-        this.navMenuComponents[0] += `
-          <li class="grid-element fs-small">
-            <span>${data["program-days"][i]}</span>
-            <span>${data["program-hours"][i]}</span>
-          </li>
-        `;
-        
-        this.navMenuComponents[2] += `
-          <li class="fs-small">
-            <a href="${data["navigation-links"][i]}" target="_self">${data["navigation-labels"][i]}</a>
-          </li>
-        `;
-      };
-      
-      for(let i = 0; i < data["contact-links"].length; i++) {
-        this.navMenuComponents[1] += `
-          <li class="fs-small">
-            <a class="contact-link" href="${data["contact-links"][i]}" target="_blank">${data["contact-labels"][i]}</a>
-          </li>
-        `;
-      };
+    this.navigationComponents = ["", "", ""];
 
-      return this.navMenuComponents[2];
+    this.renderNavigationComponents = () => {
+      for (let i = 0; i < data.menu.program.days.length; i++) {
+        this.navigationComponents[0] += `
+          <li class="grid-element">
+            <span>${data.menu.program.days[i]}</span>
+            <span>${data.menu.program.hours[i]}</span>
+          </li>
+        `;
+
+        this.navigationComponents[2] += `
+          <li>
+            <a href="${data.menu.navigation.links[i]}" target="_self">
+              ${data.menu.navigation.labels[i]}
+            </a>
+          </li>
+        `;
+      }
+
+      for (let i = 0; i < data.menu.contact.links.length; i++) {
+        this.navigationComponents[1] += `
+          <li>
+            <a class="contact__link" href="${data.menu.contact.links[i]}" target="_blank">
+              ${data.menu.contact.labels[i]}
+            </a>
+          </li>
+        `;
+      }
+
+      return this.navigationComponents[2];
     };
 
-    this.renderSideMenuComponents = () => {
-      for(let i = 0; i < 3; i++) {
-        sideMenuComponents += `
-          <li class="${data["side-menu-classes"][i]}">
-            <h2 class="${data["side-menu-classes"][i]}-title | fs-medium fw-bold">${data["side-menu-titles"][i]}</h2>
-            <ul aria-label="${data["side-menu-Labels"][i]}" class="${data["side-menu-classes"][i]}-content" role="list">
-              ${this.navMenuComponents[i]}
+    this.renderMenuComponents = () => {
+      for (let i = 0; i < data.menu.classes.length; i++) {
+        menuComponents += `
+          <li class="${data.menu.classes[i]}">
+            <p class="${data.menu.classes[i]}__title">
+              ${data.menu.titles[i]}
+            </p>
+
+            <ul aria-label="${data.menu.labels[i]}" class="${data.menu.classes[i]}__content" role="list">
+              ${this.navigationComponents[i]}
             </ul>
           </li>
         `;
-      };
+      }
 
-      return sideMenuComponents;
+      return menuComponents;
+    };
+
+    this.renderMenu = () => {
+      setTimeout(() => {
+        QS(".program").insertAdjacentHTML("afterbegin", this.data.menu.program["secondary-logo"]);
+      }, 10);
+
+      return `
+        <div class="menu">
+          <div class="menu__aside"></div>
+          <nav class="menu__nav" id="menu">
+            <button aria-label="Close menu" aria-controls="menu" aria-expanded="true"
+              class="menu__button | grid-element" id="close-menu-button">✕</button>
+
+            <ul aria-label="Menu" class="menu__links | grid-element" role="list">
+              ${this.renderMenuComponents()}
+            </ul>
+          </nav>
+        </div>
+      `;
     };
   }
 
   render() {
-    setTimeout(() => QS(".program").insertAdjacentHTML("afterbegin", this.data["secondary-logo"]), 10);
-
     return `
-      <div class="nav-container">
-        <div class="nav-content | grid-element">
-          <a ="/"><img alt="Alice Kineto Logo" class="logo" data-type="primary-logo" src="https://edibalan.github.io/alice-kineto/assets/logo.webp" /></a>
+      <nav class="nav">
+        <div class="nav__content | grid-element">
+          <img alt="Alice Kineto Logo" class="nav__logo" src="https://edibalan.github.io/alice-kineto/assets/logo.webp">
 
-          <nav class="primary-nav">
-            <ul aria-label="Navigation Menu" class="nav-menu | grid-element" role="list">${this.renderNavMenuComponents()}</ul>
-            <button aria-label="Open navigation menu" aria-controls="secondary-nav" aria-expanded="false"
-              class="button | grid-element fw-sm-bold" data-role="open-nav" id="open-nav-button">III</button>
-          </nav>
+          <ul aria-label="Navigation Menu" class="nav__menu | grid-element" role="list">
+            ${this.renderNavigationComponents()}
+          </ul>
 
-          <div class="side-menu-container">
-            <div class="side-menu-aside"></div>
-            <nav class="secondary-nav" id="secondary-nav">
-              <button aria-label="Close navigation menu" aria-controls="secondary-nav" aria-expanded="true"
-                class="button | grid-element fw-sm-bold" data-role="close-nav" id="close-nav-button">✕</button>
-
-              <ul aria-label="Side Menu" class="side-menu | grid-element" role="list">${this.renderSideMenuComponents()}</ul>
-            </nav>
-          </div>
+          <button aria-label="Open navigation menu" aria-controls="menu" aria-expanded="false"
+            class="nav__button" id="open-menu-button">III</button>
         </div>
-      </div>
+      </nav>
+      ${this.renderMenu()}
     `;
   }
 }
-export let sideMenuComponents = "";
+
+export let menuComponents = "";
