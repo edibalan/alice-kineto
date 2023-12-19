@@ -1,7 +1,6 @@
 "use strict";
 import { QS } from "https://edibalan.github.io/alice-kineto/app.js";
 import Prices from "https://edibalan.github.io/alice-kineto/components/Prices.js";
-
 export default class PricesHandler extends Prices {
   constructor(data) {
     super(data);
@@ -9,8 +8,8 @@ export default class PricesHandler extends Prices {
 
     this.button = QS(".prices__button");
     this.table = QS(".prices__table");
-    this.tableHeader = QS(".prices__table__header");
     this.tableBody = QS(".prices__table__body");
+    this.tableHeader = QS(".prices__table__header");
     
     this.time = QS("#time");
     this.price = QS("#price");
@@ -20,7 +19,6 @@ export default class PricesHandler extends Prices {
       const tableRows = QS(".prices__table__body").children;
 
       button.innerText = "Mai putin";
-
       this.tableBody.innerHTML = this.renderTableBody(data.prices.services.length);
 
       setTimeout(() => {
@@ -35,8 +33,8 @@ export default class PricesHandler extends Prices {
 
     this.shrinkTable = event => {
       const button = event.target;
+      
       button.innerText = "Mai mult";
-
       this.tableBodyHandler();
 
       button.removeEventListener("click", this.shrinkTable);
@@ -55,7 +53,8 @@ export default class PricesHandler extends Prices {
       if (window.innerWidth < 460) {
         this.time.innerHTML = "TIMP<br>MIN";
         this.price.innerHTML = "PRET<br>RON"
-      } else {
+      }
+       else {
         this.time.innerHTML = "TIMP";
         this.price.innerHTML = "PRET";
       };
@@ -67,7 +66,6 @@ export default class PricesHandler extends Prices {
     this.tableHeaderHandler();
 
     this.button.addEventListener("click", this.extendTable);
-
     window.addEventListener("resize", this.tableBodyHandler);
     window.addEventListener("resize", this.tableHeaderHandler);
   }
