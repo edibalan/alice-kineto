@@ -4,28 +4,30 @@ import Services from "https://edibalan.github.io/alice-kineto/components/Service
 export default class ServicesHandler extends Services {
   constructor() {
     super();
-    this.servicesButtons = QSAll(".service-button");
+    this.servicesButtons = QSAll(".services__element__button");
 
     this.extendDescription = event => {
       const button = event.target, description = event.target.previousElementSibling;
 
       button.innerText = "Mai putin";
-      description.classList.add("extend-description");
+      description.classList.add("extended");
 
       button.removeEventListener("click", this.extendDescription);
       button.addEventListener("click", this.shrinkDescription);
     };
-    
+
     this.shrinkDescription = event => {
       const button = event.target, description = event.target.previousElementSibling;
 
       button.innerText = "Mai mult";
-      description.classList.remove("extend-description");
+      description.classList.remove("extended");
 
       button.removeEventListener("click", this.shrinkDescription);
       button.addEventListener("click", this.extendDescription);
     };
   }
 
-  initiate() {this.servicesButtons.forEach(button => button.addEventListener("click", this.extendDescription))}
+  initiate() {
+    this.servicesButtons.forEach((button) => button.addEventListener("click", this.extendDescription));
+  }
 }
