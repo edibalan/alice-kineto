@@ -4,32 +4,40 @@ export default class Services {
     this.data = data;
 
     this.renderDescriptions = index => {
+      const descriptions = data.services.descriptions[index];
       let paragraphs = ["", "", "", ""];
 
-      for (let i = 0; i < data["services-descriptions"][index].length; i++) {
-        data["services-descriptions"][index][i] !== " " && data["services-descriptions"][index][i + 1] !== " "
-          ? paragraphs[index] += data["services-descriptions"][index][i].concat("&shy")
-          : paragraphs[index] += data["services-descriptions"][index][i];
-      };
-      
+      for (let i = 0; i < descriptions.length; i++) {
+        descriptions[i] !== " " && descriptions[i + 1] !== " "
+          ? paragraphs[index] += descriptions[i].concat("&shy")
+          : paragraphs[index] += descriptions[i];
+      }
+
       return paragraphs[index];
     };
 
     this.renderElements = () => {
       let elements = "";
 
-      for(let i = 0; i < data["services-descriptions"].length; i++) {
+      for (let i = 0; i < data.services.descriptions.length; i++) {
         elements += `
-          <div class="service-element | grid-element">
-            <img alt="Kinetotherapy illustration" class="service-image" id="image-${i + 1}" src="https://edibalan.github.io/alice-kineto/assets/${data["services-images"][i]}"/>
-            <div class="service-element-content">
-              <h2 class="service-title | fs-sm-large fw-bold">${data["services-titles"][i]}</h2>
-              <p class="service-description" id="description-${i + 1}">${this.renderDescriptions(i)}</p>
-              <button class="service-button | button fs-small fw-sm-bold" data-type="service-button">Mai mult</button>
+          <div class="services__element | grid-element">
+            <img alt="Kinetotherapy illustration" class="services__element__image" id="image-${i + 1}" src="https://edibalan.github.io/alice-kineto/assets/${data.services.images[i]}">
+
+            <div class="services__element__content">
+              <h3 class="services__element__title">
+                ${data.services.titles[i]}
+              </h3>
+              
+              <p class="services__element__description" id="description-${i + 1}">
+                ${this.renderDescriptions(i)}
+              </p>
+              
+              <button class="services__element__button">Mai mult</button>
             </div>
           </div>
         `;
-      };
+      }
 
       return elements;
     };
@@ -37,20 +45,19 @@ export default class Services {
 
   render() {
     return `
-      <section class="services-section" id="services">
-        <div class="container">
-          <div class="section-title">
-            <h1 class="fs-large fw-bold">Servicii</h1>
-            <div class="title-underline"></div>
-          </div>
-          <div class="services-content | grid-element">${this.renderElements()}</div>
-        </div>
-        <a onclick="window.scrollTo(0, 0)">
-          <button class="button | fs-sm-large" data-type="home-button" id="home-button">
+      <article class="services" id="services">
+        <h2 class="services__title">Servicii</h2>
+
+        <section class="services__content | container grid-element">
+          ${this.renderElements()}
+        </section>
+        
+        <a href="${this.data.menu.navigation.links[0]}">
+          <button class="services__button" id="home-button">
             <i class="fa-sharp fa-solid fa-house"></i>
           </button>
         </a>
-      </section>
+      </article>
     `;
   }
 }
