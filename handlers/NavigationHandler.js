@@ -63,9 +63,8 @@ export default class NavigationHandler extends Navigation {
       if (window.innerWidth < 768) {
         this.openMenuBtn.addEventListener("click", this.openMenu);
         this.closeMenuBtn.addEventListener("click", this.closeMenu);
-      } 
-      
-      else {
+      }
+       else {
         this.openMenuBtn.removeEventListener("click", this.openMenu);
         this.closeMenuBtn.removeEventListener("click", this.closeMenu);
       }
