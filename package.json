@@ -1,7 +1,6 @@
 {
-  "name": "alice-kineto-v2.1",
-  "version": "1.0.0",
-  "description": "",
+  "name": "alice-kineto",
+  "version": "2.1.0",
   "main": "app.js",
   "dependencies": {
     "ansi-colors": "^1.1.0",
