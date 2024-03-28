@@ -1,0 +1,78 @@
+@use '../../../utilities/variables' as *;
+@use '../../../utilities/mixins' as *;
+@use '../maps' as *;
+
+.carousel {
+  &__gallery, &__navigation {
+    @include grid-container;
+  }
+
+  &__gallery {
+    grid-template-columns: repeat(9, 100%);
+    margin-block: 2vh;
+    overflow: hidden;
+    @include createBreakpoints(min-width, $gallery-cols-size, grid-template-columns);
+    @include createBreakpoints(min-width, $gallery-gap-size, gap);
+
+    // WIDTH >= 600px
+    @media (min-width: 37.5em) {
+      @include gallery-rules;
+      gap: 1rem;
+
+      &::-webkit-scrollbar {
+        background-color: $grey-100;
+        height: 0.625rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $blue-100;
+      }
+    }
+
+    // WIDTH >= 912px
+    @media (min-width: 57em) {
+      @include gallery-rules(row, repeat(3, 1fr), hidden, 0);
+      height: 100%;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .carousel__image {
+      width: 100%;
+
+      &.zoomed {
+        position: absolute;
+      }
+
+      // ORIENTATION LANDSCAPE
+      @media (orientation: landscape) {
+        cursor: zoom-in;
+
+        &.zoomed {
+          cursor: zoom-out;
+        }
+      }
+    }
+  }
+
+  &__navigation {
+    @include grid-container(center, space-between, column);
+    grid-template-columns: repeat(2, 43vw);
+
+    .carousel__button {
+      border-radius: 0.25rem;
+      font-size: $fs-xs;
+      font-weight: $fw-sb;
+      letter-spacing: 0;
+      outline: 1px solid $black;
+      text-transform: uppercase;
+      @include createBreakpoints(min-width, $button-space, padding-block);
+
+      &:hover {
+        outline: 2px solid $blue-100;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+// Home background size
+$background-size: (
+  43.75: 84rem,
+  46.75: 90rem,
+  50: 95em,
+  56.25: 100em,
+);
+
+// Home container space
+$container-space: (
+  0: 3.25rem,
+  45.5: 0
+);
+
+// Home container width
+$container-width: (
+  28.75: 86%,
+  37.5: 80%,
+  48: 76%,
+  54: 72%,
+  64: auto,
+);
+
+// Home container columns sizes
+$container-cols-sizes: (
+  64: 60% 42.5%,
+  90: 55% 45%,
+  105: 52% 46%,
+  120: 50% 45%,
+);

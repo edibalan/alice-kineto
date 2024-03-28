@@ -1,0 +1,39 @@
+@use '../../utilities/variables' as *;
+@use '../../utilities/mixins' as *;
+@use './maps' as *;
+
+.prices {
+  @include createBreakpoints(min-width, $section-space, padding);
+
+  &__table {
+    border-collapse: collapse;
+    border-color: $blue-100;
+    border-inline: 1px solid transparent;
+    margin: 2vh 0 1.25vh;
+    width: 100%;
+
+    col {
+      @include createBreakpoints(min-width, $table-col-width, width);
+    }
+ 
+    thead {
+      background-color: $blue-100;
+    }
+
+    &__header, &__body {
+      text-align: left;
+    }
+
+    &__header {
+      padding-left: 0.5rem;
+    }
+
+    th {
+      color: $white;
+      font-weight: $fw-sb;
+      letter-spacing: 0.02rem;
+      text-transform: uppercase;
+      @include createBreakpoints(min-width, $table-header-height, height);
+    }
+  }
+}

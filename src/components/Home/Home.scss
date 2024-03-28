@@ -1,0 +1,92 @@
+@use '../../utilities/variables' as *;
+@use '../../utilities/mixins' as *;
+@use './maps' as *;
+
+.home {
+  &__container {
+    height: 100vh;
+    @include createBreakpoints(min-height, $container-space, margin-top);
+    @include createBreakpoints(min-width, $container-cols-sizes, grid-template-columns);
+    @include createBreakpoints(min-width, $container-width, width);
+    @include grid-container;
+
+    .home__image {
+      margin: auto auto 0;
+    }
+
+    .home__content {
+      margin-top: 1.375vh;
+      order: 1;
+
+      .home__description {
+        line-height: 1.4rem;
+        margin-inline: auto;
+        padding-block: 1vh;
+        text-align: left;
+        width: 96.5%;
+
+        p:first-of-type {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .home__button {
+        border: 1px solid $black;
+        border-radius: 0.375rem;
+        letter-spacing: 0.05rem;
+        margin-top: 1vh;
+        padding: 0.875rem;
+        text-transform: uppercase;
+    
+        &:hover {
+          background-color: $blue-100;
+          border-color: $blue-100;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  // WIDTH >= 1024px
+  @media (min-width: 64em) {
+    background-image: url('../../assets/background.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 74rem;
+
+    &__container {
+      align-content: center;
+      grid-template-columns: 56.5% 45.5%;
+      margin-top: 0;
+      text-align: left;
+      @include grid-container(center, center, column);
+  
+      .home__image, .home__content {
+        margin: auto;
+      }
+  
+      .home__content {
+        order: -1;
+  
+        .home__description {
+          margin: 0;
+  
+          p:first-of-type {
+            margin-bottom: 0.75rem;
+          }
+        }
+  
+        .home__button {
+          zoom: 0.875;
+        }
+      }
+    }
+  }
+
+  // Set the size of home background at different breakpoints
+  @each $breakpoint, $size in $background-size {
+    @media (min-width: 80em) and (min-height: ( $breakpoint + 'em')) {
+      background-size: $size;
+    }
+  }
+}

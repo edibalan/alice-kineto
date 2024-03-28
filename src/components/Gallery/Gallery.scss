@@ -1,0 +1,6 @@
+@use '../../utilities/mixins' as *;
+@use './maps' as *;
+
+.gallery {
+  @include createBreakpoints(min-width, $section-space, padding-block);
+}

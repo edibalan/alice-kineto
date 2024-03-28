@@ -1,0 +1,21 @@
+@use '../../../utilities/variables' as *;
+@use '../../../utilities/mixins' as *;
+
+.navigation {
+  &__menu {
+    column-gap: 1.5rem;
+    @include grid-container(center, center, column);
+
+    li {
+      letter-spacing: 0.04rem;
+
+      a {
+        font-weight: $fw-sb;
+
+        &:hover {
+          color: $blue-300;
+        }
+      }
+    }
+  }
+}

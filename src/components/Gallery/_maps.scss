@@ -1,0 +1,24 @@
+// Section space
+$section-space: (
+  0: 4.375rem,
+  48em: 6.25rem
+);
+
+// Carousel gallery columns size
+$gallery-cols-size: (
+  37.5: repeat(5, 48.5%),
+  44.5: repeat(5, 49%),
+  57: repeat(3, 1fr),
+);
+
+// Carousel gallery gap size
+$gallery-gap-size: (
+  48: 1.75rem,
+  57: 1rem,
+);
+
+// Carousel button space
+$button-space: (
+  0: 0.275rem,
+  22.5: 0.625rem
+);

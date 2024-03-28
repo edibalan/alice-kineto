@@ -1,0 +1,50 @@
+
+@mixin createBreakpoints( $type, $map, $prop ) {
+  @each $breakpoint, $value in $map {
+    @if $breakpoint < 64 {
+      @media (#{$type}: ($breakpoint + 'em')) {
+        #{$prop}: $value;
+      }
+    }
+    @else {
+      @media (#{$type}: ($breakpoint + 'em')) and (orientation: landscape) {
+        #{$prop}: $value;
+      }
+    }
+  }
+}
+
+@mixin flex-container($direction: initial, $align: initial, $justify: initial) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin gallery-rules( $flow:column, $rows:repeat(2, 1fr), $overflow:scroll, $padding:1.25vh ) {
+  grid-auto-flow: $flow;
+  grid-template-rows: $rows;
+  overflow-x: $overflow;
+  padding-bottom: $padding;
+}
+
+@mixin grid-container( $y-axis:unset, $x-axis:unset, $flow:unset ) {
+  align-items: $y-axis;
+  display: grid;
+  grid-auto-flow: $flow;
+  justify-content: $x-axis;
+}
+
+@mixin position( $type:static, $top:unset, $right:unset, $bottom:unset, $left:unset ) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// @mixin position-rules {
+//   position: fixed;
+//   top: 0;
+//   transition-duration: 0.5s;
+// }

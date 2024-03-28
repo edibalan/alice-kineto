@@ -1,0 +1,63 @@
+// Services section space
+$section-space: (
+  0: 4.375rem,
+  48: 6.25rem
+);
+
+// Services content columns size
+$content-cols-size: (
+  37.5: repeat(2, 1fr),
+  57: auto
+);
+
+// Services content gap size
+$content-gap-size: (
+  0: 6vh 0,
+  37.5: 1.5rem,
+  48: 1.75rem,
+  57: 5.5rem,
+  90: 7rem
+);
+
+// Services content space
+$content-space: (
+  0: 5vh,
+  64: 12.5vh
+);
+
+// Services card columns size
+$card-cols-size: (
+  57: (
+    even: 54% 42%,
+    odd: 42% 54%
+  ),
+
+  64: (
+    even: 57% 39%,
+    odd: 39% 57%
+  ),
+);
+
+// Services Card description height
+$card-description-height: (
+  0: 7rem,
+  22.5: 8.5rem,
+  25.75: 9.75rem,
+  28.75: 13.5rem,
+  37.5: 7rem,
+  44.5: 8.5rem,
+  57: 4.25rem
+);
+
+// Services button position
+$button-position: (
+  0: (
+    bottom: 1rem,
+    right: 1rem
+  ),
+
+  28.75: (
+    bottom: 1.5rem,
+    right: 1.5rem
+  )
+);

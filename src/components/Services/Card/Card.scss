@@ -1,0 +1,66 @@
+@use '../../../utilities/variables' as *;
+@use '../../../utilities/mixins' as *;
+@use '../maps' as *;
+
+.services__content .card {
+  @include flex-container(column);
+
+  // Set the size for each column of card at different breakpoints
+  @each $breakpoint, $map in $card-cols-size {
+    $even-cols: map-get($map, 'even');
+    $odd-cols: map-get($map, 'odd');
+
+    @media (min-width: ( $breakpoint + 'em' )) {
+      &:nth-of-type(even) {
+        grid-template-columns: $even-cols;
+      }
+
+      &:nth-of-type(odd) {
+        grid-template-columns: $odd-cols;
+      }
+    }
+  }
+
+  &__image, &__description, &__title {
+    margin-inline: auto;
+  }
+
+  &__image {
+    height: fit-content;
+  }
+
+  &__content {
+    margin-top: 1.5vh;
+
+    .card__title {
+      line-height: 1.25rem;
+      text-transform: uppercase;
+    }
+    
+    .card__description {
+      line-height: 1.4rem;
+      margin-block: 1vh;
+      overflow: hidden;
+      text-align: left;
+      width: 97%;
+      @include createBreakpoints(min-width, $card-description-height, max-height);
+  
+      &.extended {
+        max-height: 100%;
+      }
+    }
+  }
+
+  // WIDTH >= 912px
+  @media (min-width: 57em) {
+    @include grid-container(center, space-between);
+
+    &__content {
+      margin: 0;
+    }
+
+    #image-2, #image-4 {
+      order: 1;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+// section-space
+$section-space: (
+  0: 4.375rem 0 8.75rem,
+  48: 6.25rem 0 12.5rem
+);
+
+// Prices table header height
+$table-header-height: (
+  0: 2.55rem,
+  22.5: 5.25vh,
+  33.75: 6.85vh,
+  37.5: 3.1rem,
+  44.5: 3.3rem,
+  48: 3.55rem,
+  50: 3.7rem,
+  51.25: 3.8rem,
+  54: 4rem,
+  64: 3.6rem,
+  105: 3.85rem,
+  120: 4.05rem
+);
+
+// Prices table col width
+$table-col-width: (
+  0: 65%,
+  28.75: auto
+);

@@ -1,0 +1,29 @@
+@use '../../../utilities/variables' as *;
+@use '../../../utilities/mixins' as *;
+
+.footer__navigation .card {
+  .secondary__logo {
+    margin: 1vh auto 3.5vh;
+    max-width: 100%;
+
+    // HEIGHT <= 548px
+    @media (max-height: 34.25em) and (orientation: portrait) {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-weight: $fw-sb;
+    margin-bottom: 2vh;
+    text-align: left;
+  }
+
+  &, &__content, &__content li {
+    width: 100%;
+  }
+
+  &__content li {
+    padding-block: 0.75vh;
+    @include grid-container(center, space-between, column);
+  }
+}

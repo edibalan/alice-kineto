@@ -1,0 +1,42 @@
+@use '../../utilities/variables' as *;
+@use '../../utilities/mixins' as *;
+@use './maps' as *;
+
+.header {
+  background-color: $white;
+  transition-duration: 0.5s;
+  width: 100%;
+  z-index: 1;
+  @include createBreakpoints(min-width, $header-space, padding);
+  @include position(fixed, 0);
+
+  // WIDTH >= 1024px
+  @media (min-width: 64em) {
+    @include grid-container(center, center);
+  }
+
+  &.blurred {
+    backdrop-filter: blur(0.3rem);
+    background-color: hsla(0, 0%, 100%, 0.7);
+  }
+
+  &.hidden {
+    top: -7.5rem;
+  }
+
+  &__content {
+    width: 100%;
+    @include createBreakpoints(min-width, $content-width, width);
+    @include grid-container(center, space-between, column);
+  
+    .logo {
+      @include createBreakpoints(min-width, $logo-width, width);
+    }
+  
+    .menu__icon {
+      cursor: pointer;
+      @include createBreakpoints(min-width, $modal-button-space, margin-top);
+      @include createBreakpoints(min-width, $modal-button-width, width);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.table__row {
+  &__services {
+    padding-left: 0.5rem;
+  }
+  
+  &__times, &__prices {
+    text-align: center;
+  }
+}

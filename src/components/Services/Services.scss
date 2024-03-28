@@ -1,0 +1,52 @@
+@use '../../utilities/variables' as *;
+@use '../../utilities/mixins' as *;
+@use './maps' as *;
+
+.services {
+  @include createBreakpoints(min-width, $section-space, padding-block);
+
+  &__content {
+    @include createBreakpoints(min-width, $content-cols-size, grid-template-columns);
+    @include createBreakpoints(min-width, $content-gap-size, gap);
+    @include createBreakpoints(min-width, $content-space, margin-top);
+    @include grid-container;
+
+    // HEIGHT >= 720px & ORIENTATION LANDSCAPE
+    @media (min-height: 45em) and (orientation: landscape) {
+      gap: 17vh;
+    }
+  }
+
+  &__button {
+    background-color: $white;
+    border: 1px solid $black;
+    border-radius: 0.375rem;
+    padding: 0.375rem;
+    position: fixed;
+    z-index: 1;
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    // Set position of button at different breakpoints
+    @each $breakpoint, $map in $button-position {
+      $bottom: map-get($map, 'bottom');
+      $right: map-get($map, 'right');
+
+      @media (min-width: ( $breakpoint + 'em' )) {
+        bottom: $bottom;
+        right: $right;
+      }
+    }
+  }
+
+  &__element__title {
+    text-transform: uppercase;
+  }
+}
