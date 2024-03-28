@@ -1,0 +1,36 @@
+{
+  "name": "Alice Kineto App",
+  "start_url": "",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "min_version": "2.1",
+  "version": "2.1",
+  "version_name": "2.1",
+  "icons": [
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-57.png",
+      "sizes": "57x57",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
