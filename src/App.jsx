@@ -44,8 +44,6 @@ const App = () => {
       )
   }
 
-  window.onresize = () => setTimeout(() => location.reload(), 500);
-
   window.onscroll = () => {
     let currentPosition = window.scrollY;
 
